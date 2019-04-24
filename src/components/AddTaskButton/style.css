@@ -1,0 +1,15 @@
+.main-button{
+    width: 124px;
+    height: 24px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    margin-left: 20px;
+    cursor: pointer;
+    
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+}

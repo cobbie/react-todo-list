@@ -1,0 +1,35 @@
+.task-container{
+    background-color: white;
+    width: 339px;
+    height: 38px;
+    border-radius: 8px;
+
+}
+
+.task-flexbox{
+padding-top: 7px;
+width: 310px;
+display: flex;
+justify-content: space-between;
+margin-left: 10px;
+
+}
+.task-name{
+
+}
+
+.checkbox{
+    width: 26px;
+    height: 26px;
+    background-color: black;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-square{
+    width: 24px;
+    height: 24px;
+    background-color: white;
+}
