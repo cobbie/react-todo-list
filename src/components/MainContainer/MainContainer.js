@@ -27,8 +27,13 @@ class MainContainer extends Component {
     });
   };
 
-  editTask = () => {
+  editTask = task => {
     const newText = prompt("New task name: ");
+    const updateState = [...this.state.tasks];
+    updateState[updateState.indexOf(task)] = newText;
+    this.setState({
+        tasks: updateState
+    })
   }
 
   render() {
@@ -44,7 +49,7 @@ class MainContainer extends Component {
               <li key={id}>
                 <Task nameOfTask={task} 
                         onClickRemove={() => this.removeTask(task)}
-                        editTask={() => this.editTask}/>
+                        editTask={() => this.editTask(task)}/>
               </li>
             ))}
           </div>
