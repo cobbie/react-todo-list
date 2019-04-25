@@ -6,7 +6,7 @@ const Task = (props) =>{
     return(
         <div className = "task-container">
             <div className="task-flexbox">
-                <div className="task-name" onClick={() => {console.log("temp")}}>{props.nameOfTask}</div>
+                <div className="task-name" onClick={props.editTask}>{props.nameOfTask}</div>
                 <div className="checkbox" onClick={props.onClickRemove}> 
                     <div className="inner-square">
 

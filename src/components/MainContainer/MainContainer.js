@@ -17,16 +17,19 @@ class MainContainer extends Component {
     this.setState({
       tasks: updateState
     });
-    console.log(this.state.tasks);
   };
 
-  removeTask = props => {
-    const updateState = this.state.tasks.splice(this.state.tasks.indexOf(props.task), 1);
-    console.log("item accessed: " + this.state.tasks.indexOf(props.task));
+  removeTask = taskToRemove => {
+    const updateState = [...this.state.tasks];
+    updateState.splice(updateState.indexOf(taskToRemove), 1); 
     this.setState({
         tasks: updateState
     });
   };
+
+  editTask = () => {
+    const newText = prompt("New task name: ");
+  }
 
   render() {
     return (
@@ -37,10 +40,11 @@ class MainContainer extends Component {
             <AddTaskButton onClick={this.addTask}/>
           </div>
           <div className="tasks">
-            {this.state.tasks.map(task => (
-              <li key={task + Math.random().toString()}>
+          {this.state.tasks.map((task, id) => (
+              <li key={id}>
                 <Task nameOfTask={task} 
-                        onClickRemove={this.removeTask} id={task.id}/>
+                        onClickRemove={() => this.removeTask(task)}
+                        editTask={() => this.editTask}/>
               </li>
             ))}
           </div>
