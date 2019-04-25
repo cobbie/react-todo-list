@@ -12,23 +12,20 @@ class MainContainer extends Component {
   }
 
   addTask = () => {
-      const itemName = prompt("Name of Task");
-      const updateState = this.state.tasks.concat(itemName);
-          this.setState({
-            tasks:  updateState
-          });
-      
+    const itemName = prompt("Name of Task");
+    const updateState = this.state.tasks.concat(itemName);
+    this.setState({
+      tasks: updateState
+    });
+    console.log(this.state.tasks);
+  };
 
-
-  }
-
-  removeTask = () => {
-    const current = this.state.numTasks;
-    if (current.length !== 0) {
-      this.setState({
-        numTasks: current.pop(current[current.length - 1])
-      });
-    }
+  removeTask = props => {
+    const updateState = this.state.tasks.splice(this.state.tasks.indexOf(props.task), 1);
+    console.log("item accessed: " + this.state.tasks.indexOf(props.task));
+    this.setState({
+        tasks: updateState
+    });
   };
 
   render() {
@@ -37,10 +34,16 @@ class MainContainer extends Component {
         <div className="flexbox">
           <div className="flex first-flexbox">
             <div className="header">SIMPLE TO-DO APP</div>
-            <AddTaskButton onClick={this.addTask} />
+            <AddTaskButton onClick={this.addTask}/>
           </div>
-          <div className="tasks"> {this.state.tasks.map((task) => <li key={task}><Task nameOfTask={task}/></li>)}
-</div>
+          <div className="tasks">
+            {this.state.tasks.map(task => (
+              <li key={task + Math.random().toString()}>
+                <Task nameOfTask={task} 
+                        onClickRemove={this.removeTask} id={task.id}/>
+              </li>
+            ))}
+          </div>
         </div>
       </div>
     );

@@ -7,7 +7,7 @@ const Task = (props) =>{
         <div className = "task-container">
             <div className="task-flexbox">
                 <div className="task-name" onClick={() => {console.log("temp")}}>{props.nameOfTask}</div>
-                <div className="checkbox"> 
+                <div className="checkbox" onClick={props.onClickRemove}> 
                     <div className="inner-square">
 
                     </div>
